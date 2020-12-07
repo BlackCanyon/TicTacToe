@@ -1,5 +1,8 @@
+
 //AI Logic (This implementation uses Minimax with no pruning because the search
-//space is so small.)
+//space is so small. For a good explanation, see
+//https://en.wikipedia.org/wiki/Minimax)
+
 function getMinimaxScore(board, depth, computerLetter, opponentLetter, maximixingPlayer) {
   let bestValue = undefined;
   if (isWinner(board, computerLetter) === true) {
@@ -94,10 +97,17 @@ function isSpaceFree(board, move) {
   }
 }
 
+//Rendering-related functions
+function updateGameBoard(move, letter) {
+  document.querySelector("#a"+move).innerHTML = "<h3>"+letter+"</h3>"
+}
+
 //Main gameplay loop
 
 function startGame() {
   if (gameStarted === false) {
+    document.querySelector(".press-key").classList.add("invisible");
+    document.querySelector(".board").classList.remove("invisible");
     let gameBoard = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '];
     let playerLetter = "X";
     let computerLetter = "O";
@@ -107,26 +117,33 @@ function startGame() {
 
     for (let i = 0; i < document.querySelectorAll(".tile").length; i++) {
       document.querySelectorAll(".tile > button")[i].addEventListener("click", function() {
-        playerMove = this.parentElement.id;
+        playerMove = this.parentElement.id.slice(1);
         if (isSpaceFree(gameBoard, playerMove) === true) {
           makeMove(playerMove, gameBoard, playerLetter);
-          console.log(gameBoard);
+          updateGameBoard(playerMove, playerLetter)
           if (isWinner(gameBoard, playerLetter) === true) {
-            console.log("You are the winner")
-          } else if (isBoardFull(gameBoard) == true) {
+            document.querySelector(".postgame").classList.remove("invisible");
+            gameStarted = false;
+          } else if (isBoardFull(gameBoard) === true) {
+            document.querySelector(".postgame").innerText = "The game is a tie!";
+            document.querySelector(".postgame").classList.remove("invisible")
+            gameStarted = false;
             //Tie game stuff here.
           } else {
             computerMove = getMinimaxMove(gameBoard, computerLetter, playerLetter);
             makeMove(computerMove, gameBoard, computerLetter);
-            console.log(gameBoard)
+            updateGameBoard(computerMove, computerLetter)
             if (isWinner(gameBoard, computerLetter) === true) {
+              document.querySelector(".postgame").innerText = "You lost!";
+              document.querySelector(".postgame").classList.remove("invisible");
+              gameStarted = false;
               //Make some visual changes here.
             } else if (isBoardFull(gameBoard) == true) {
-              //Tie game stuff here.
+              document.querySelector(".postgame").innerText = "The game is a tie!";
+              document.querySelector(".postgame").classList.remove("invisible");
+              gameStarted = false;
             }
           }
-        } else {
-          console.log("Don't cheat.")
         }
       })
     }

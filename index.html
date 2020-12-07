@@ -4,26 +4,30 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   </head>
   <body>
     <h1>Tic-Tac-Toe</h1>
-    <div class="board">
+    <div class="board game-started">
       <div class="row">
-        <div id="0" class="tile"><button type="button" name="button"></button></div>
-        <div id="3" class="tile"><button type="button" name="button"></button></div>
-        <div id="6" class="tile"><button type="button" name="button"></button></div>
+        <div id="a0" class="tile"><button type="button" name="button"></button></div>
+        <div id="a3" class="tile"><button type="button" name="button"></button></div>
+        <div id="a6" class="tile"><button type="button" name="button"></button></div>
       </div>
       <div class="row">
-        <div id="1" class="tile"><button type="button" name="button"></button></div>
-        <div id="4" class="tile"><button type="button" name="button"></button></div>
-        <div id="7" class="tile"><button type="button" name="button"></button></div>
+        <div id="a1" class="tile"><button type="button" name="button"></button></div>
+        <div id="a4" class="tile"><button type="button" name="button"></button></div>
+        <div id="a7" class="tile"><button type="button" name="button"></button></div>
       </div>
       <div class="row">
-        <div id="2" class="tile"><button type="button" name="button"></button></div>
-        <div id="5" class="tile"><button type="button" name="button"></button></div>
-        <div id="8" class="tile"><button type="button" name="button"></button></div>
+        <div id="a2" class="tile"><button type="button" name="button"></button></div>
+        <div id="a5" class="tile"><button type="button" name="button"></button></div>
+        <div id="a8" class="tile"><button type="button" name="button"></button></div>
       </div>
     </div>
+    <h2 class="press-key">Press any key to play.</h2>
+    <h2 class="postgame invisible">Winning is impossible. Did you have a little fun in Developer Tools?</h2>
     <script src="index.js" charset="utf-8"></script>
   </body>
 </html>
