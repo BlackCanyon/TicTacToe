@@ -1,0 +1,28 @@
+.tile {
+  width: 80px;
+  height: 80px;
+  margin: 5px 5px 0 0;
+  border-color: black;
+  border-width: 5px;
+  background-color: white;
+}
+
+button {
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  background: transparent;
+}
+
+.board {
+  display: flex;
+  width: min-content;
+  margin: auto;
+}
+
+h3 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+}
